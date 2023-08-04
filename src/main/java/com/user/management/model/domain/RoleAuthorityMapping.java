@@ -1,3 +1,4 @@
+/*
 package com.user.management.model.domain;
 
 import lombok.Getter;
@@ -20,3 +21,4 @@ public class RoleAuthorityMapping {
     @Column(name="authority_id")
     private String authorityCode;
 }
+*/

@@ -1,0 +1,23 @@
+ CREATE TABLE IF NOT EXISTS roles
+(
+ id SERIAL PRIMARY KEY,
+ role_name VARCHAR(64)  NOT NULL UNIQUE,
+ role_descriptions VARCHAR(255)
+
+ );
+
+ CREATE TABLE IF NOT EXISTS authorities
+ (
+  id SERIAL PRIMARY KEY,
+  authority VARCHAR(64)  NOT NULL UNIQUE,
+  authority_description VARCHAR(255)
+
+  );
+
+CREATE TABLE IF NOT EXISTS role_authority_mapping
+(
+ role_id INT NOT NULL,
+ authority_id INT NOT NULL,
+  FOREIGN KEY (role_id) REFERENCES roles (id) ,
+  FOREIGN KEY (authority_id) REFERENCES authorities (id)
+ );

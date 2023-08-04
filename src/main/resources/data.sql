@@ -1,3 +1,4 @@
+
 INSERT INTO roles (id, role_name, role_descriptions) VALUES (1, 'REST_ADMIN','Admin has all the rights');
 INSERT INTO roles (id, role_name,role_descriptions) VALUES (2, 'REST_MANGER','Manger have some specific rights');
 INSERT INTO roles (id, role_name,role_descriptions) VALUES (3, 'REST_USER','User have only limited right.');
@@ -10,8 +11,7 @@ INSERT INTO authorities (id, authority,authority_description) VALUES (3, 'DELETE
 INSERT INTO authorities (id, authority,authority_description) VALUES (4, 'CREATE','For creating.');
 
 
-INSERT INTO role_authority_mapping (id, role_id, authority_id) VALUES (1, '1','1');
-INSERT INTO role_authority_mapping (id, role_id,authority_id) VALUES (2, '1','2');
-INSERT INTO role_authority_mapping (id, role_id,authority_id) VALUES (3, '1','3');
-INSERT INTO role_authority_mapping (id, role_id,authority_id) VALUES (4, '1','4');
-
+INSERT INTO role_authority_mapping ( role_id, authority_id) VALUES (1,1);
+INSERT INTO role_authority_mapping ( role_id,authority_id) VALUES (1,2);
+INSERT INTO role_authority_mapping ( role_id,authority_id) VALUES (1,3);
+INSERT INTO role_authority_mapping ( role_id,authority_id) VALUES (1,4);

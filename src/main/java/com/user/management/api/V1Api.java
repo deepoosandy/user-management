@@ -22,129 +22,131 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-03T11:56:22.485324715Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-04T06:09:10.608841297Z[GMT]")
 @Validated
 public interface V1Api {
 
-    @Operation(summary = "Return only one user.", description = "Reterive single user by his userId", tags = {"UserController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "User found successfully. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))),
-
-            @ApiResponse(responseCode = "404", description = "User not found. ")})
+    @Operation(summary = "Return only one user.", description = "Reterive single user by his userId", tags={ "UserController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "User found successfully. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))),
+        
+        @ApiResponse(responseCode = "404", description = "User not found. ") })
     @RequestMapping(value = "/v1/user/{userId}",
-            produces = {"application/json"},
-            method = RequestMethod.GET)
-    ResponseEntity<User> fetchUserById(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required = true, schema = @Schema()) @PathVariable("userId") String userId);
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<User> fetchUserById(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required=true, schema=@Schema()) @PathVariable("userId") String userId);
 
 
     @Operation(summary = "List all authories in the system.", description = "This will show all authories.", security = {
-            @SecurityRequirement(name = "OAuth2", scopes = {
-                    "read",
-                    "write",
-                    "admin"})}, tags = {"AuthorityMappingController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "List all the roles. ",
-                    content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = String.class))))})
-    @RequestMapping(value = "/v1/map/authorities",
-            produces = {"application/json"},
-            method = RequestMethod.GET)
-    ResponseEntity<List<String>> listAllAuthorties();
+        @SecurityRequirement(name = "OAuth2", scopes = {
+            "read",
+"write",
+"admin"        })    }, tags={ "AuthorityMappingController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "List all the roles. ", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Authority.class)))) })
+    @RequestMapping(value = "/v1/authorities",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<Authority>> listAllAuthorties();
 
 
     @Operation(summary = "List all roles in the system.", description = "This will show all authories.", security = {
-            @SecurityRequirement(name = "OAuth2", scopes = {
-                    "read",
-                    "write",
-                    "admin"})}, tags = {"RoleController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "List all the roles. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Role.class)))})
+        @SecurityRequirement(name = "OAuth2", scopes = {
+            "read",
+"write",
+"admin"        })    }, tags={ "RoleController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "List all the roles. ", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Role.class)))) })
     @RequestMapping(value = "/v1/roles",
-            produces = {"application/json"},
-            method = RequestMethod.GET)
-    ResponseEntity<Role> listAllRoles();
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<List<Role>> listAllRoles();
 
 
     @Operation(summary = "List all the roles and their authories in the system.", description = "This will show all the roles and their authories.", security = {
-            @SecurityRequirement(name = "OAuth2", scopes = {
-                    "read",
-                    "write",
-                    "admin"})}, tags = {"AuthorityMappingController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "List all the roles. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = RoleAndAuthorityMapping.class)))})
+        @SecurityRequirement(name = "OAuth2", scopes = {
+            "read",
+"write",
+"admin"        })    }, tags={ "AuthorityMappingController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "List all the roles. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = RoleAndAuthorityMapping.class))) })
     @RequestMapping(value = "/v1/map/authoritiesmapping",
-            produces = {"application/json"},
-            method = RequestMethod.GET)
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
     ResponseEntity<RoleAndAuthorityMapping> listAuthoritiesAndRoleMapping();
 
 
     @Operation(summary = "List all roles in the system.", description = "This will show all authories.", security = {
-            @SecurityRequirement(name = "OAuth2", scopes = {
-                    "read",
-                    "write",
-                    "admin"})}, tags = {"JwtController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "List all the roles. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)))})
+        @SecurityRequirement(name = "OAuth2", scopes = {
+            "read",
+"write",
+"admin"        })    }, tags={ "JwtController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "List all the roles. ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))) })
     @RequestMapping(value = "/v1/latestJwt",
-            produces = {"application/json"},
-            method = RequestMethod.GET)
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
     ResponseEntity<String> showLatestJwt();
 
 
     @Operation(summary = "List all the roles available in the system.", description = "This will show all the roles of the system.", security = {
-            @SecurityRequirement(name = "OAuth2", scopes = {
-                    "read",
-                    "write",
-                    "admin"})}, tags = {"AuthorityMappingController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "List all the roles. content: application/json:   schema:     $ref: '#/components/schemas/RoleAndAuthorityMapping'      ")})
+        @SecurityRequirement(name = "OAuth2", scopes = {
+            "read",
+"write",
+"admin"        })    }, tags={ "AuthorityMappingController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "List all the roles. content: application/json:   schema:     $ref: '#/components/schemas/RoleAndAuthorityMapping'      ") })
     @RequestMapping(value = "/v1/map/authority",
-            consumes = {"application/json"},
-            method = RequestMethod.PATCH)
-    ResponseEntity<Void> updateAuthories(@Parameter(in = ParameterIn.DEFAULT, description = "", schema = @Schema()) @Valid @RequestBody List<Authority> body);
+        consumes = { "application/json" }, 
+        method = RequestMethod.PATCH)
+    ResponseEntity<Void> updateAuthories(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody List<Authorities> body);
 
 
     @Operation(summary = "update a user", description = "This is for creating a user. And only admin can create user in the system. ", security = {
-            @SecurityRequirement(name = "OAuth2", scopes = {
-                    "read",
-                    "write",
-                    "admin"})}, tags = {"UserController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "User created successfully! "),
-
-            @ApiResponse(responseCode = "409", description = "User already exist in the system. ")})
+        @SecurityRequirement(name = "OAuth2", scopes = {
+            "read",
+"write",
+"admin"        })    }, tags={ "UserController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "201", description = "User created successfully! "),
+        
+        @ApiResponse(responseCode = "409", description = "User already exist in the system. ") })
     @RequestMapping(value = "/v1/user/{userName}",
-            produces = {"application/json"},
-            consumes = {"application/json"},
-            method = RequestMethod.PUT)
-    ResponseEntity<Void> updateUserName(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required = true, schema = @Schema()) @PathVariable("userName") String userName, @Parameter(in = ParameterIn.DEFAULT, description = "", schema = @Schema()) @Valid @RequestBody User body);
+        produces = { "application/json" }, 
+        consumes = { "application/json" }, 
+        method = RequestMethod.PUT)
+    ResponseEntity<Void> updateUserName(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required=true, schema=@Schema()) @PathVariable("userName") String userName, @Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody User body);
 
 
     @Operation(summary = "Create a user", description = "This is for creating a user. And only admin can create user in the system. ", security = {
-            @SecurityRequirement(name = "OAuth2", scopes = {"read", "write", "admin"})}, tags = {"UserController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "User created successfully! "),
-
-            @ApiResponse(responseCode = "409", description = "User already exist in the system. ")})
+        @SecurityRequirement(name = "OAuth2", scopes = {
+            "read",
+"write",
+"admin"        })    }, tags={ "UserController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "201", description = "User created successfully! "),
+        
+        @ApiResponse(responseCode = "409", description = "User already exist in the system. ") })
     @RequestMapping(value = "/v1/user",
-            produces = {"application/json"},
-            consumes = {"application/json"},
-            method = RequestMethod.POST)
-    ResponseEntity<Void> v1UserPost(@Parameter(in = ParameterIn.DEFAULT, description = "", schema = @Schema()) @Valid @RequestBody User body);
+        produces = { "application/json" }, 
+        consumes = { "application/json" }, 
+        method = RequestMethod.POST)
+    ResponseEntity<Void> v1UserPost(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody User body);
 
 
     @Operation(summary = "List all available users in the system.", description = "Retrieve all users `Users` objects from the server.  ", security = {
-            @SecurityRequirement(name = "OAuth2", scopes = {
-                    "read",
-                    "write",
-                    "admin"})}, tags = {"UserController"})
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successful response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse200.class))),
-
-            @ApiResponse(responseCode = "404", description = "No records are available in the system. ")})
+        @SecurityRequirement(name = "OAuth2", scopes = {
+            "read",
+"write",
+"admin"        })    }, tags={ "UserController" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "Successful response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse200.class))),
+        
+        @ApiResponse(responseCode = "404", description = "No records are available in the system. ") })
     @RequestMapping(value = "/v1/users",
-            produces = {"application/json"},
-            method = RequestMethod.GET)
-    ResponseEntity<InlineResponse200> v1UsersGet(@Parameter(in = ParameterIn.QUERY, description = "Maximum number of items to return ", schema = @Schema(defaultValue = "20")) @Valid @RequestParam(value = "page[limit]", required = false, defaultValue = "20") Integer pageLimit, @Parameter(in = ParameterIn.QUERY, description = "Max size of returned list.  ", schema = @Schema(defaultValue = "0")) @Valid @RequestParam(value = "page[offset]", required = false, defaultValue = "0") Integer pageOffset, @Parameter(in = ParameterIn.QUERY, description = "The ordering of the returned list. ", schema = @Schema(defaultValue = "displayName")) @Valid @RequestParam(value = "orderBy", required = false, defaultValue = "displayName") String orderBy);
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<InlineResponse200> v1UsersGet(@Parameter(in = ParameterIn.QUERY, description = "Maximum number of items to return " ,schema=@Schema( defaultValue="20")) @Valid @RequestParam(value = "page[limit]", required = false, defaultValue="20") Integer pageLimit, @Parameter(in = ParameterIn.QUERY, description = "Max size of returned list.  " ,schema=@Schema( defaultValue="0")) @Valid @RequestParam(value = "page[offset]", required = false, defaultValue="0") Integer pageOffset, @Parameter(in = ParameterIn.QUERY, description = "The ordering of the returned list. " ,schema=@Schema( defaultValue="displayName")) @Valid @RequestParam(value = "orderBy", required = false, defaultValue="displayName") String orderBy);
 
 }
 

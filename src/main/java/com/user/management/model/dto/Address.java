@@ -2,16 +2,17 @@ package com.user.management.model.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
-
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * Address
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-03T11:56:22.485324715Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-04T06:09:10.608841297Z[GMT]")
 
 
 public class Address   {
@@ -139,8 +140,7 @@ public class Address   {
    **/
   @Schema(description = "This is user city pincode.")
   
-  @Size(min=6,max=6)
-  public String getPincode() {
+  @Size(min=6,max=6)   public String getPincode() {
     return pincode;
   }
 
@@ -150,7 +150,7 @@ public class Address   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -190,7 +190,7 @@ public class Address   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

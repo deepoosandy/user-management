@@ -1,21 +1,21 @@
 package com.user.management.model.dto;
 
-import java.util.Objects;
-import java.util.ArrayList;
-
 import org.springframework.validation.annotation.Validated;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * RoleAndAuthorityMapping
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-03T11:56:22.485324715Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-04T06:09:10.608841297Z[GMT]")
 
 
-public class RoleAndAuthorityMapping extends ArrayList<Authority>  {
+public class RoleAndAuthorityMapping extends ArrayList<Authorities>  {
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -43,7 +43,7 @@ public class RoleAndAuthorityMapping extends ArrayList<Authority>  {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

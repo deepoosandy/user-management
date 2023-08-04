@@ -25,6 +25,8 @@ public class Role {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable( name="role_authority_mapping", joinColumns = @JoinColumn(name="role_id")
     , inverseJoinColumns = @JoinColumn(name="authority_id"))
-     Set<Authority> authorities;
+     Set<Authority> authorities1;
+
+
 
 }

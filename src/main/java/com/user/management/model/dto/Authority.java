@@ -2,76 +2,67 @@ package com.user.management.model.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Authority
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-03T11:56:22.485324715Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-04T06:09:10.608841297Z[GMT]")
 
 
 public class Authority   {
-  @JsonProperty("role")
-  private String role = null;
+  @JsonProperty("name")
+  private String name = null;
 
-  @JsonProperty("authorties")
-  @Valid
-  private List<String> authorties = null;
+  @JsonProperty("authorityId")
+  private Integer authorityId = null;
 
-  public Authority role(String role) {
-    this.role = role;
+  public Authority name(String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Get role
-   * @return role
+   * Get name
+   * @return name
    **/
   @Schema(description = "")
   
-    public String getRole() {
-    return role;
+    public String getName() {
+    return name;
   }
 
-  public void setRole(String role) {
-    this.role = role;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public Authority authorties(List<String> authorties) {
-    this.authorties = authorties;
-    return this;
-  }
-
-  public Authority addAuthortiesItem(String authortiesItem) {
-    if (this.authorties == null) {
-      this.authorties = new ArrayList<String>();
-    }
-    this.authorties.add(authortiesItem);
+  public Authority authorityId(Integer authorityId) {
+    this.authorityId = authorityId;
     return this;
   }
 
   /**
-   * Get authorties
-   * @return authorties
+   * Get authorityId
+   * @return authorityId
    **/
   @Schema(description = "")
   
-    public List<String> getAuthorties() {
-    return authorties;
+    public Integer getAuthorityId() {
+    return authorityId;
   }
 
-  public void setAuthorties(List<String> authorties) {
-    this.authorties = authorties;
+  public void setAuthorityId(Integer authorityId) {
+    this.authorityId = authorityId;
   }
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -79,13 +70,13 @@ public class Authority   {
       return false;
     }
     Authority authority = (Authority) o;
-    return Objects.equals(this.role, authority.role) &&
-        Objects.equals(this.authorties, authority.authorties);
+    return Objects.equals(this.name, authority.name) &&
+        Objects.equals(this.authorityId, authority.authorityId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(role, authorties);
+    return Objects.hash(name, authorityId);
   }
 
   @Override
@@ -93,8 +84,8 @@ public class Authority   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Authority {\n");
     
-    sb.append("    role: ").append(toIndentedString(role)).append("\n");
-    sb.append("    authorties: ").append(toIndentedString(authorties)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    authorityId: ").append(toIndentedString(authorityId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -103,7 +94,7 @@ public class Authority   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -15,16 +15,20 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public Role listAllRole(){
-        Iterable<com.user.management.model.domain.Role> roles=  roleRepository.findAll();
-        Iterator<com.user.management.model.domain.Role> rolesIterator=roles.iterator();
-        List<String>roleList=new ArrayList<>();
-        while(rolesIterator.hasNext()){
-            roleList.add(rolesIterator.next().getRoleName());
+    public List<Role> listAllRole() {
+        Iterable<com.user.management.model.domain.Role> roles = roleRepository.findAll();
+        List<Role> roleList = new ArrayList<>();
+        if (roles != null) {
+            Iterator<com.user.management.model.domain.Role> rolesIterator = roles.iterator();
+            while (rolesIterator.hasNext()) {
+                com.user.management.model.domain.Role roleEntity=rolesIterator.next();
+                Role role = new Role();
+                role.setId(Long.valueOf(roleEntity.getId()).intValue());
+                role.setName(roleEntity.getRoleName());
+                roleList.add(role);
+            }
         }
-        Role role= new Role();
-        role.setRoles(roleList);
-        return role;
+        return roleList;
     }
 
 }
