@@ -1,9 +1,6 @@
 package com.user.management.service;
 
-import com.user.management.model.dto.Authority;
-import com.user.management.model.dto.Role;
 import com.user.management.repository.AuthorityRepository;
-import com.user.management.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
