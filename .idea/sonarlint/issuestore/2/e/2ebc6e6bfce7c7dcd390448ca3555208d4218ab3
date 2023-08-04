@@ -1,0 +1,45 @@
+
+t
+java:S2293#"YReplace the type specification in this constructor call with the diamond operator ("<>").(³ö”øÿÿÿÿ
+t
+java:S2293:"YReplace the type specification in this constructor call with the diamond operator ("<>").(€ë˜ôùÿÿÿÿ
+o
+java:S2293V"YReplace the type specification in this constructor call with the diamond operator ("<>").(šÚˆ”
+u
+java:S2293š"YReplace the type specification in this constructor call with the diamond operator ("<>").(½š†¦úÿÿÿÿ
+C
+java:S1604%"(Make this anonymous inner class a lambda(™ºØéùÿÿÿÿ
+C
+java:S1604+"(Make this anonymous inner class a lambda(áñÅîúÿÿÿÿ
+C
+java:S16041"(Make this anonymous inner class a lambda(» Êşÿÿÿÿ
+C
+java:S1604<"(Make this anonymous inner class a lambda(èÂšÍúÿÿÿÿ
+C
+java:S1604B"(Make this anonymous inner class a lambda(ÛüÆıÿÿÿÿ
+C
+java:S1604H"(Make this anonymous inner class a lambda(…ËÜşÿÿÿÿ
+C
+java:S1604N"(Make this anonymous inner class a lambda(›¯öúÿÿÿÿ
+>
+java:S1604X"(Make this anonymous inner class a lambda(ë…å§
+>
+java:S1604^"(Make this anonymous inner class a lambda(¨Ââå
+=
+java:S1604d"(Make this anonymous inner class a lambda(‚é9
+C
+java:S1604j"(Make this anonymous inner class a lambda(˜ï‹ñùÿÿÿÿ
+?
+java:S1604„"(Make this anonymous inner class a lambda(ŒœÛ›
+V	java:S110"<This class has 6 parents which is greater than 5 authorized.(¼·ÙÎşÿÿÿÿ
+H
+java:S1948r"2Make "fromMilliseconds" transient or serializable.(¯‚ñÙ
+F
+java:S1948t"1Make "fromNanoseconds" transient or serializable.(ğ±ÀA
+J
+java:S1948v"/Make "parsedToValue" transient or serializable.(¥‰±áùÿÿÿÿ
+>
+java:S1948x"(Make "adjust" transient or serializable.(ØŠ®
+=	java:S131¡""Add a default case to this switch.(¶Ùî—şÿÿÿÿ
+O
+java:S1874Ë"8Remove this use of "mappingException"; it is deprecated.(ŠŒ‚
