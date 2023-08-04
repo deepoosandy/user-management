@@ -81,9 +81,13 @@ public class V1ApiController implements V1Api {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateAuthories(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody List<Authorities> body) {
+    public ResponseEntity<List<Authorities>> updateAuthories(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema())
+                                                @Valid @RequestBody List<Authorities> body) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            body= roleAuthorityMappingService.updateAuthorityMapping(body);
+        }
+        return new ResponseEntity<List<Authorities>>(body,HttpStatus.OK);
     }
 
     public ResponseEntity<Void> updateUserName(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required=true, schema=@Schema()) @PathVariable("userName") String userName,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody User body) {

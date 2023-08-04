@@ -21,7 +21,7 @@ public class Authority {
     @Column(name="authority_description")
     private String authorityDescriptions;
 
-    @ManyToMany(mappedBy = "authorities1")
+    @ManyToMany(mappedBy = "authorities")
     Set<Role>  role;
 
 

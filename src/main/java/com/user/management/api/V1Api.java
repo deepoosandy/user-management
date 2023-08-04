@@ -99,7 +99,7 @@ public interface V1Api {
     @RequestMapping(value = "/v1/map/authority",
         consumes = { "application/json" }, 
         method = RequestMethod.PATCH)
-    ResponseEntity<Void> updateAuthories(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody List<Authorities> body);
+    ResponseEntity<List<Authorities>> updateAuthories(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody List<Authorities> body);
 
 
     @Operation(summary = "update a user", description = "This is for creating a user. And only admin can create user in the system. ", security = {
