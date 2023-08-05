@@ -2,10 +2,12 @@ package com.user.management.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -14,7 +16,7 @@ import java.util.Objects;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-04T06:09:10.608841297Z[GMT]")
 
-
+@Builder
 public class User   {
   @JsonProperty("firstName")
   private String firstName = null;
@@ -32,10 +34,10 @@ public class User   {
   private String userPassword = null;
 
   @JsonProperty("address")
-  private Address address = null;
+  private List<Address> address = null;
 
-  @JsonProperty("roles")
-  private Role roles = null;
+  @JsonProperty("roleId")
+  private Integer roleId = null;
 
   public User firstName(String firstName) {
     this.firstName = firstName;
@@ -132,7 +134,7 @@ public class User   {
     this.userPassword = userPassword;
   }
 
-  public User address(Address address) {
+  public User address(List<Address> address) {
     this.address = address;
     return this;
   }
@@ -144,18 +146,15 @@ public class User   {
   @Schema(description = "")
   
     @Valid
-    public Address getAddress() {
+    public List<Address> getAddress() {
     return address;
   }
 
-  public void setAddress(Address address) {
+  public void setAddress(List<Address> address) {
     this.address = address;
   }
 
-  public User roles(Role roles) {
-    this.roles = roles;
-    return this;
-  }
+
 
   /**
    * Get roles
@@ -164,12 +163,12 @@ public class User   {
   @Schema(description = "")
   
     @Valid
-    public Role getRoles() {
-    return roles;
+    public Integer getRoleId() {
+    return roleId;
   }
 
-  public void setRoles(Role roles) {
-    this.roles = roles;
+  public void setRoles(Integer roleId) {
+    this.roleId = roleId;
   }
 
 
@@ -188,12 +187,12 @@ public class User   {
         Objects.equals(this.userEmailId, user.userEmailId) &&
         Objects.equals(this.userPassword, user.userPassword) &&
         Objects.equals(this.address, user.address) &&
-        Objects.equals(this.roles, user.roles);
+        Objects.equals(this.roleId, user.roleId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstName, lastName, userId, userEmailId, userPassword, address, roles);
+    return Objects.hash(firstName, lastName, userId, userEmailId, userPassword, address, roleId);
   }
 
   @Override
@@ -207,7 +206,7 @@ public class User   {
     sb.append("    userEmailId: ").append(toIndentedString(userEmailId)).append("\n");
     sb.append("    userPassword: ").append(toIndentedString(userPassword)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
-    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roleId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

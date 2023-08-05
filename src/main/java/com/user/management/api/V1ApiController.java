@@ -5,6 +5,7 @@ import com.user.management.model.dto.*;
 import com.user.management.service.AuthorityService;
 import com.user.management.service.RoleAuthorityMappingService;
 import com.user.management.service.RoleService;
+import com.user.management.service.UserService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-04T06:09:10.608841297Z[GMT]")
@@ -40,6 +42,9 @@ public class V1ApiController implements V1Api {
     private AuthorityService authorityService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private RoleAuthorityMappingService roleAuthorityMappingService;
 
     @org.springframework.beans.factory.annotation.Autowired
@@ -48,23 +53,21 @@ public class V1ApiController implements V1Api {
         this.request = request;
     }
 
-    public ResponseEntity<User> fetchUserById(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required=true, schema=@Schema()) @PathVariable("userId") String userId) {
+    public ResponseEntity<User> fetchUserById(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required = true, schema = @Schema()) @PathVariable("userId") String userId) {
         String accept = request.getHeader("Accept");
-
-
         return new ResponseEntity<User>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<List<Authority>> listAllAuthorties() {
-        return new ResponseEntity<List<Authority>>(authorityService.listAllAuthorities(),HttpStatus.OK);
+        return new ResponseEntity<List<Authority>>(authorityService.listAllAuthorities(), HttpStatus.OK);
     }
 
     public ResponseEntity<List<Role>> listAllRoles() {
-        return new ResponseEntity<List<Role>>(roleService.listAllRole(),HttpStatus.OK);
+        return new ResponseEntity<List<Role>>(roleService.listAllRole(), HttpStatus.OK);
     }
 
     public ResponseEntity<RoleAndAuthorityMapping> listAuthoritiesAndRoleMapping() {
-        return new ResponseEntity<RoleAndAuthorityMapping>(roleAuthorityMappingService.listAllRoleAuthorityMapping(),HttpStatus.OK);
+        return new ResponseEntity<RoleAndAuthorityMapping>(roleAuthorityMappingService.listAllRoleAuthorityMapping(), HttpStatus.OK);
     }
 
     public ResponseEntity<String> showLatestJwt() {
@@ -81,37 +84,33 @@ public class V1ApiController implements V1Api {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<List<Authorities>> updateAuthories(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema())
-                                                @Valid @RequestBody List<Authorities> body) {
+    public ResponseEntity<List<Authorities>> updateAuthories(@Parameter(in = ParameterIn.DEFAULT, description = "", schema = @Schema())
+                                                             @Valid @RequestBody List<Authorities> body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            body= roleAuthorityMappingService.updateAuthorityMapping(body);
+            body = roleAuthorityMappingService.updateAuthorityMapping(body);
         }
-        return new ResponseEntity<List<Authorities>>(body,HttpStatus.OK);
+        return new ResponseEntity<List<Authorities>>(body, HttpStatus.OK);
     }
 
-    public ResponseEntity<Void> updateUserName(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required=true, schema=@Schema()) @PathVariable("userName") String userName,@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody User body) {
+    public ResponseEntity<Void> updateUserName(@Parameter(in = ParameterIn.PATH, description = "This is userId. ", required = true, schema = @Schema()) @PathVariable("userName") String userName, @Parameter(in = ParameterIn.DEFAULT, description = "", schema = @Schema()) @Valid @RequestBody User body) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> v1UserPost(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody User body) {
+    public ResponseEntity<Void> v1UserPost(@Parameter(in = ParameterIn.DEFAULT, description = "", schema = @Schema()) @Valid @RequestBody User body) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        userService.createUser(body);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<InlineResponse200> v1UsersGet(@Parameter(in = ParameterIn.QUERY, description = "Maximum number of items to return " ,schema=@Schema( defaultValue="20")) @Valid @RequestParam(value = "page[limit]", required = false, defaultValue="20") Integer pageLimit,@Parameter(in = ParameterIn.QUERY, description = "Max size of returned list.  " ,schema=@Schema( defaultValue="0")) @Valid @RequestParam(value = "page[offset]", required = false, defaultValue="0") Integer pageOffset,@Parameter(in = ParameterIn.QUERY, description = "The ordering of the returned list. " ,schema=@Schema( defaultValue="displayName")) @Valid @RequestParam(value = "orderBy", required = false, defaultValue="displayName") String orderBy) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<InlineResponse200>(objectMapper.readValue("{\n  \"totalRecords\" : 1,\n  \"totalPage\" : 6,\n  \"users\" : [ [ {\n    \"firstName\" : \"Foo\",\n    \"lastName\" : \"Decusa\",\n    \"userPassword\" : \"userPassword\",\n    \"userEmailId\" : \"test@xyx.com\",\n    \"address\" : {\n      \"country\" : \"country\",\n      \"pincode\" : \"pincode\",\n      \"city\" : \"city\",\n      \"addressLine1\" : \"addressLine1\",\n      \"addressLine2\" : \"addressLine2\",\n      \"state\" : \"state\"\n    },\n    \"roles\" : {\n      \"name\" : \"name\",\n      \"id\" : 0\n    },\n    \"userId\" : \"dancy\"\n  }, {\n    \"firstName\" : \"Foo\",\n    \"lastName\" : \"Decusa\",\n    \"userPassword\" : \"userPassword\",\n    \"userEmailId\" : \"test@xyx.com\",\n    \"address\" : {\n      \"country\" : \"country\",\n      \"pincode\" : \"pincode\",\n      \"city\" : \"city\",\n      \"addressLine1\" : \"addressLine1\",\n      \"addressLine2\" : \"addressLine2\",\n      \"state\" : \"state\"\n    },\n    \"roles\" : {\n      \"name\" : \"name\",\n      \"id\" : 0\n    },\n    \"userId\" : \"dancy\"\n  } ], [ {\n    \"firstName\" : \"Foo\",\n    \"lastName\" : \"Decusa\",\n    \"userPassword\" : \"userPassword\",\n    \"userEmailId\" : \"test@xyx.com\",\n    \"address\" : {\n      \"country\" : \"country\",\n      \"pincode\" : \"pincode\",\n      \"city\" : \"city\",\n      \"addressLine1\" : \"addressLine1\",\n      \"addressLine2\" : \"addressLine2\",\n      \"state\" : \"state\"\n    },\n    \"roles\" : {\n      \"name\" : \"name\",\n      \"id\" : 0\n    },\n    \"userId\" : \"dancy\"\n  }, {\n    \"firstName\" : \"Foo\",\n    \"lastName\" : \"Decusa\",\n    \"userPassword\" : \"userPassword\",\n    \"userEmailId\" : \"test@xyx.com\",\n    \"address\" : {\n      \"country\" : \"country\",\n      \"pincode\" : \"pincode\",\n      \"city\" : \"city\",\n      \"addressLine1\" : \"addressLine1\",\n      \"addressLine2\" : \"addressLine2\",\n      \"state\" : \"state\"\n    },\n    \"roles\" : {\n      \"name\" : \"name\",\n      \"id\" : 0\n    },\n    \"userId\" : \"dancy\"\n  } ] ]\n}", InlineResponse200.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<InlineResponse200>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<InlineResponse200>(HttpStatus.NOT_IMPLEMENTED);
+    public ResponseEntity<InlineResponse200> v1UsersGet(@Parameter(in = ParameterIn.QUERY, description = "Maximum number of items to return ", schema = @Schema(defaultValue = "20")) @Valid @RequestParam(value = "page[limit]", required = false, defaultValue = "20") Integer pageLimit, @Parameter(in = ParameterIn.QUERY, description = "Max size of returned list.  ", schema = @Schema(defaultValue = "0")) @Valid @RequestParam(value = "page[offset]", required = false, defaultValue = "0") Integer pageOffset, @Parameter(in = ParameterIn.QUERY, description = "The ordering of the returned list. ", schema = @Schema(defaultValue = "displayName")) @Valid @RequestParam(value = "orderBy", required = false, defaultValue = "displayName") String orderBy) {
+        List<User> users = userService.listAllUsers();
+        InlineResponse200 inlineResponse200 = new InlineResponse200();
+        ArrayList<ListOfUsers> list = new ArrayList<>();
+        list.add(userService.listAllUsers());
+        inlineResponse200.setUsers(list);
+        return new ResponseEntity<InlineResponse200>(inlineResponse200, HttpStatus.OK);
     }
 
 }

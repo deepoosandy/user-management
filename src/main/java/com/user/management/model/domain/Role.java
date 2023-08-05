@@ -28,5 +28,4 @@ public class Role {
      Set<Authority> authorities;
 
 
-
 }
