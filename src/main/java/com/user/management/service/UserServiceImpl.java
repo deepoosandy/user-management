@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
                 userEmailId(userDetails.getUserEmailId()).userId(userDetails.getUserId()).address(addressList).build();
     }
 
-    private List<com.user.management.model.domain.Address> mapAddressDtoToAddressEntity(List<Address> addressDtoList) {
+    private List<com.user.management.model.domain.Address> mapAddressDtoToAddressEntity(List<Address> addressDtoList,  UserDetails userDetailsEntity) {
         return addressDtoList.stream().map(address -> {
                     com.user.management.model.domain.Address addressEntity = new com.user.management.model.domain.Address();
                     addressEntity.setAddressLine1(address.getAddressLine1());
@@ -49,13 +49,13 @@ public class UserServiceImpl implements UserService {
                     addressEntity.setCountry(address.getCountry());
                     addressEntity.setPincode(address.getPincode());
                     addressEntity.setState(address.getState());
+                    addressEntity.setUser(userDetailsEntity);
                     return addressEntity;
                 }
         ).collect(Collectors.toList());
     }
 
     private UserDetails mapUserDtoToUserDetailsEntity(User user) {
-        List<com.user.management.model.domain.Address> addressList = mapAddressDtoToAddressEntity(user.getAddress());
         UserDetails userDetailsEntity= new UserDetails();
         userDetailsEntity.setFirstName(user.getFirstName());
         userDetailsEntity.setLastName(user.getLastName());
@@ -63,6 +63,7 @@ public class UserServiceImpl implements UserService {
         userDetailsEntity.setUserEmailId(user.getUserEmailId());
         userDetailsEntity.setUserId(user.getUserId());
         userDetailsEntity.setUserPassword(user.getUserPassword());
+        List<com.user.management.model.domain.Address> addressList = mapAddressDtoToAddressEntity(user.getAddress(),userDetailsEntity);
         userDetailsEntity.setAddressList(addressList);
         return userDetailsEntity;
     }
