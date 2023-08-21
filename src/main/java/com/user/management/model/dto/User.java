@@ -17,7 +17,7 @@ import java.util.Objects;
  * User
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-06T10:18:51.791670183Z[GMT]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-06T10:18:51.791670183Z[GMT]")
 @Setter
 @Getter
 @Builder

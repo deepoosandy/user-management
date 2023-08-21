@@ -9,7 +9,7 @@ import java.util.Objects;
  * RoleAndAuthorityMapping
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-04T06:09:10.608841297Z[GMT]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-08-04T06:09:10.608841297Z[GMT]")
 
 
 public class RoleAndAuthorityMapping extends ArrayList<Authorities>  {
