@@ -1,6 +1,6 @@
 package com.user.management.service;
 
-import com.user.management.model.dto.Role;
+import com.user.management.model.domain.Role;
 import com.user.management.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,14 +15,14 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public List<Role> listAllRole() {
-        Iterable<com.user.management.model.domain.Role> roles = roleRepository.findAll();
-        List<Role> roleList = new ArrayList<>();
+    public List<com.user.management.model.dto.Role> listAllRole() {
+        Iterable<Role> roles = roleRepository.findAll();
+        List<com.user.management.model.dto.Role> roleList = new ArrayList<>();
         if (roles != null) {
-            Iterator<com.user.management.model.domain.Role> rolesIterator = roles.iterator();
+            Iterator<Role> rolesIterator = roles.iterator();
             while (rolesIterator.hasNext()) {
-                com.user.management.model.domain.Role roleEntity=rolesIterator.next();
-                Role role = new Role();
+                Role roleEntity=rolesIterator.next();
+                com.user.management.model.dto.Role role = new com.user.management.model.dto.Role();
                 role.setId(Long.valueOf(roleEntity.getId()).intValue());
                 role.setName(roleEntity.getRoleName());
                 roleList.add(role);

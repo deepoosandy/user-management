@@ -18,10 +18,10 @@ public class RoleAuthorityMappingService {
     private RoleRepository roleRepository;
 
     public RoleAndAuthorityMapping listAllRoleAuthorityMapping() {
-        Iterable<com.user.management.model.domain.Role> roles = roleRepository.findAll();
+        Iterable<Role> roles = roleRepository.findAll();
         RoleAndAuthorityMapping authoritiesList = new RoleAndAuthorityMapping();
         if (roles != null) {
-            Iterator<com.user.management.model.domain.Role> roleIterator = roles.iterator();
+            Iterator<Role> roleIterator = roles.iterator();
             while (roleIterator.hasNext()) {
                 Authorities authorities = new Authorities();
                 Role role = roleIterator.next();

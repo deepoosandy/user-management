@@ -1,4 +1,3 @@
-
 INSERT INTO roles (id, role_name, role_descriptions) VALUES (1, 'REST_ADMIN','Admin has all the rights');
 INSERT INTO roles (id, role_name,role_descriptions) VALUES (2, 'REST_MANGER','Manger have some specific rights');
 INSERT INTO roles (id, role_name,role_descriptions) VALUES (3, 'REST_USER','User have only limited right.');

@@ -1,3 +1,4 @@
+/*
 package com.user.management.configuration;
 
 import org.springframework.context.annotation.Configuration;
@@ -21,3 +22,4 @@ public class SwaggerUiConfiguration implements WebMvcConfigurer {
         registry.addViewController("/swagger-ui/").setViewName("forward:/swagger-ui/index.html");
     }
 }
+*/
