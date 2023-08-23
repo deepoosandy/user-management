@@ -1,3 +1,4 @@
+/*
 package com.user.management.configuration;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -22,12 +23,14 @@ import org.threeten.bp.temporal.TemporalAccessor;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+*/
 /**
  * Deserializer for ThreeTen temporal {@link Instant}s, {@link OffsetDateTime}, and {@link ZonedDateTime}s.
  * Adapted from the jackson threetenbp InstantDeserializer to add support for deserializing rfc822 format.
  *
  * @author Nick Williams
- */
+ *//*
+
 public class CustomInstantDeserializer<T extends Temporal>
         extends ThreeTenDateTimeDeserializerBase<T> {
     private static final long serialVersionUID = 1L;
@@ -230,3 +233,4 @@ public class CustomInstantDeserializer<T extends Temporal>
         }
     }
 }
+*/
